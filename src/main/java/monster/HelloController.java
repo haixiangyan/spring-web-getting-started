@@ -1,5 +1,6 @@
 package monster;
 
+import monster.annotation.Cache;
 import monster.entity.RankItem;
 import monster.service.RankService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,11 @@ public class HelloController {
         model.put("rankItems", rankItems);
 
         return new ModelAndView("index", model);
+    }
+
+    @Cache
+    @RequestMapping("/rank")
+    public Object rank() {
+        return rankService.getRank();
     }
 }
