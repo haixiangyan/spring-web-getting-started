@@ -1,6 +1,8 @@
 package monster.entity;
 
-public class RankItem {
+import java.io.Serializable;
+
+public class RankItem implements Serializable {
     private int score;
     private User user;
 
