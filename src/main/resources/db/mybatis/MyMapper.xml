@@ -4,14 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MyMapper">
     <select id="selectRank" resultMap="rankItem">
-        select t.user_id, score_sum
+        select t.user_id, score_sum, name
         from (
                  select user_id, sum(score) as score_sum
                  from match
                  group by user_id
                  order by score_sum
              ) t
-                 join user on user_id = t.user_id
+                 join user on id = t.user_id
     </select>
 
     <resultMap id="rankItem" type="monster.entity.RankItem">
