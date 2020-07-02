@@ -7,7 +7,7 @@
         select t.user_id, score_sum, name
         from (
                  select user_id, sum(score) as score_sum
-                 from match
+                 from `match`
                  group by user_id
                  order by score_sum
              ) t

@@ -102,6 +102,12 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.19</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -116,9 +122,23 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>6.5.0</version>
                 <configuration>
-                    <url>jdbc:h2:file:${project.basedir}/target/test</url>
+                    <url>jdbc:mysql://localhost:3306/my-springboot</url>
                     <user>root</user>
                     <password>root</password>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>monster.Application</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
