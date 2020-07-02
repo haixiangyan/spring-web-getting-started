@@ -24,6 +24,8 @@ public class HelloController {
         Map<String, Object> model = new HashMap<>();
         model.put("rankItems", rankItems);
 
+        System.out.println("Request!!!");
+
         return new ModelAndView("index", model);
     }
 
